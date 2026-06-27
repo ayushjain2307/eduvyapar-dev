@@ -15,7 +15,7 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  beforeLoad: () => { throw redirect({ to: '/dashboard' }) },
+  beforeLoad: () => { throw redirect({ to: '/signin' }) },
 })
 
 const signinRoute = createRoute({
