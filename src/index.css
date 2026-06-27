@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ── CSS variables ── */
+:root {
+  --te-800: #115E59;
+  --te-700: #0F766E;
+  --te-600: #0D9488;
+  --te-500: #14B8A6;
+  --te-400: #2DD4BF;
+  --te-200: #99F6E4;
+  --te-100: #CCFBF1;
+  --te-50: #F0FDFA;
+  --am-600: #D97706;
+  --am-400: #F59E0B;
+  --am-100: #FDE68A;
+  --am-50: #FFFBEB;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f4f4;
+  --bg-tertiary: #e8ecec;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-tertiary: rgba(0, 0, 0, 0.07);
+  --border-secondary: rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(200, 220, 220, 0.55);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --glow: rgba(13, 148, 136, 0.12);
+  --r6: 6px;
+  --r8: 8px;
+  --r12: 12px;
+  --r20: 20px;
+  --sidebar-width: 52px;
+  --topbar-h: 52px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1e;
+  --bg-secondary: #26262c;
+  --bg-tertiary: #0f0f12;
+  --text-primary: #f0f0f2;
+  --text-secondary: #8a8a9a;
+  --border-tertiary: rgba(255, 255, 255, 0.07);
+  --border-secondary: rgba(255, 255, 255, 0.13);
+  --glass-bg: rgba(26, 26, 30, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --glow: rgba(13, 148, 136, 0.28);
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f4f4;
+  --bg-tertiary: #e8ecec;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-tertiary: rgba(0, 0, 0, 0.07);
+  --border-secondary: rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(200, 220, 220, 0.55);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --glow: rgba(13, 148, 136, 0.12);
+}
+
+/* ── Global reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ── Liquid glass ── */
+.topbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--glass-border) !important;
+}
+
+.rail, .mods-panel {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 0.5px solid var(--glass-border) !important;
+}
+
+/* ── Greeting gradient ── */
+.greeting {
+  background: linear-gradient(135deg, #093d37 0%, #0F766E 30%, #0D9488 62%, #2ecfc0 100%) !important;
+}
+
+/* ── Rail tooltip ── */
+.rail-tooltip {
+  position: absolute;
+  left: calc(var(--sidebar-width) + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: var(--r6);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 200;
+}
+
+.rail-item:hover .rail-tooltip { opacity: 1; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-secondary); border-radius: 2px; }
+
+/* ── Recharts ── */
+.recharts-tooltip-wrapper { z-index: 50 !important; }
