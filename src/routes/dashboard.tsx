@@ -90,11 +90,11 @@ export default function Dashboard() {
       <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 0' }}>
 
         {/* GREETING */}
-        <div style={{ display: 'flex', gap: 10, marginBottom: 16, alignItems: 'stretch' }}>
-          <div className="greeting" style={{ flex: 1, borderRadius: 'var(--r12)', overflow: 'hidden' }}>
-            <div style={{ padding: '16px 20px' }}>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>Tuesday, 10 June 2026</div>
-              <div style={{ fontSize: 20, fontWeight: 500, color: '#fff', marginBottom: 8 }}>Hi, Default User 👋</div>
+        <div style={{ display: 'flex', gap: 12, marginBottom: 16, alignItems: 'stretch' }}>
+          <div className="greeting" style={{ maxWidth: 820, flexShrink: 0, borderRadius: 'var(--r12)', overflow: 'hidden', flex: '0 0 auto', position: 'relative' }}>
+            <div style={{ padding: '18px 22px', position: 'relative', zIndex: 1 }}>
+              <div style={{ fontSize: 11, color: 'var(--te-100)', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 3 }}>Tuesday, 10 June 2026</div>
+              <div style={{ fontSize: 22, fontWeight: 500, color: '#fff', marginBottom: 10 }}>Hi, Default User 👋</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {[
                   { text: '48 tasks pending', dot: true },
@@ -109,7 +109,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'row', gap: 8, justifyContent: 'flex-end', alignItems: 'center' }}>
             {[
               { label: 'New Admission', icon: <IconUserPlus size={15} />, href: '/admission' },
               { label: 'Quick Add', icon: <IconPlus size={15} /> },

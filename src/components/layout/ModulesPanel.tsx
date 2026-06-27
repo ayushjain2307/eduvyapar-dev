@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import { IconX, IconGridDots, IconArrowRight } from '@tabler/icons-react'
 import { mockModules } from '../../lib/mock-data'
 
@@ -8,38 +8,51 @@ interface ModulesPanelProps {
 }
 
 const pinnedModules = mockModules.filter(m => m.pinned)
-const recentModules = mockModules.slice(0, 4)
+const recentModules = mockModules.filter(m => !m.pinned).slice(0, 4)
+
+const MODULE_ROUTES: Record<string, string> = {
+  admission: '/admission',
+  'pre-admission': '/admission',
+}
 
 export default function ModulesPanel({ isOpen, onClose }: ModulesPanelProps) {
+  const navigate = useNavigate()
+
+  const handleItemClick = (id: string) => {
+    const route = MODULE_ROUTES[id]
+    if (route) navigate({ to: route as any })
+    onClose()
+  }
+
   return (
     <div
-      className="mods-panel flex-shrink-0 flex flex-col overflow-hidden transition-all duration-200"
+      className="mods-panel"
       style={{
         width: isOpen ? 220 : 0,
+        flexShrink: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        transition: 'width 0.22s cubic-bezier(0.4,0,0.2,1)',
         borderRight: '0.5px solid var(--glass-border)',
-        transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
       }}
     >
       <div style={{ width: 220, display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* Header */}
-        <div
-          className="flex items-center justify-between flex-shrink-0"
-          style={{ padding: '14px 14px 10px', borderBottom: '0.5px solid var(--border-tertiary)' }}
-        >
+        <div style={{ padding: '14px 14px 10px', borderBottom: '0.5px solid var(--border-tertiary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
             Quick Access
           </span>
           <button
             onClick={onClose}
-            className="flex items-center justify-center rounded-lg border-0 cursor-pointer transition-all duration-150"
-            style={{ width: 24, height: 24, background: 'transparent', color: 'var(--text-secondary)' }}
+            style={{ width: 24, height: 24, background: 'transparent', border: 'none', borderRadius: 6, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}
           >
             <IconX size={13} />
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto">
+        <div style={{ flex: 1, overflowY: 'auto' }}>
           {/* Pinned */}
           <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text-secondary)', letterSpacing: '0.06em', textTransform: 'uppercase', padding: '10px 14px 4px', whiteSpace: 'nowrap' }}>
             Pinned
@@ -47,15 +60,12 @@ export default function ModulesPanel({ isOpen, onClose }: ModulesPanelProps) {
           {pinnedModules.map(m => (
             <div
               key={m.id}
-              className="flex items-center gap-2.5 cursor-pointer transition-all duration-150"
-              style={{ padding: '8px 14px' }}
+              onClick={() => handleItemClick(m.id)}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 14px', cursor: 'pointer', transition: '0.15s' }}
               onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-secondary)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <div
-                className="flex items-center justify-center rounded-lg flex-shrink-0"
-                style={{ width: 28, height: 28, background: m.bg, color: m.color, fontSize: 14 }}
-              >
+              <div style={{ width: 28, height: 28, borderRadius: 6, background: m.bg, color: m.color, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <i className={`ti ${m.icon}`} />
               </div>
               <span style={{ fontSize: 12, color: 'var(--text-primary)', fontWeight: 500, flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -72,15 +82,12 @@ export default function ModulesPanel({ isOpen, onClose }: ModulesPanelProps) {
           {recentModules.map(m => (
             <div
               key={m.id}
-              className="flex items-center gap-2.5 cursor-pointer transition-all duration-150"
-              style={{ padding: '8px 14px' }}
+              onClick={() => handleItemClick(m.id)}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 14px', cursor: 'pointer', transition: '0.15s' }}
               onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-secondary)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <div
-                className="flex items-center justify-center rounded-lg flex-shrink-0"
-                style={{ width: 28, height: 28, background: m.bg, color: m.color, fontSize: 14 }}
-              >
+              <div style={{ width: 28, height: 28, borderRadius: 6, background: m.bg, color: m.color, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <i className={`ti ${m.icon}`} />
               </div>
               <span style={{ fontSize: 12, color: 'var(--text-primary)', fontWeight: 500, flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -92,27 +99,14 @@ export default function ModulesPanel({ isOpen, onClose }: ModulesPanelProps) {
 
         {/* Footer */}
         <div style={{ padding: 10, borderTop: '0.5px solid var(--border-tertiary)', flexShrink: 0 }}>
-          <Link
-            to="/modules"
-            className="flex items-center gap-2"
-            style={{
-              height: 36,
-              padding: '0 12px',
-              borderRadius: 'var(--r8)',
-              background: 'var(--te-50)',
-              border: '0.5px solid var(--te-200)',
-              color: 'var(--te-700)',
-              fontSize: 12,
-              fontWeight: 500,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-            onClick={onClose}
+          <button
+            onClick={() => { navigate({ to: '/modules' }); onClose() }}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%', height: 36, padding: '0 12px', borderRadius: 'var(--r8)', background: 'var(--te-50)', border: '0.5px solid var(--te-200)', color: 'var(--te-700)', fontSize: 12, fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', transition: '0.15s' }}
           >
             <IconGridDots size={15} />
             All Modules
             <IconArrowRight size={13} style={{ marginLeft: 'auto' }} />
-          </Link>
+          </button>
         </div>
       </div>
     </div>
