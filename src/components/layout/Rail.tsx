@@ -105,7 +105,7 @@ export default function Rail({ onModulesToggle }: RailProps) {
         <a
           href="https://wa.me/" target="_blank" rel="noopener noreferrer"
           style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
-          title="WhatsApp"
+          title="Click here to chat with us on WhatsApp"
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#dcfce7'; (e.currentTarget as HTMLElement).style.color = '#16a34a' }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
         >
@@ -115,7 +115,7 @@ export default function Rail({ onModulesToggle }: RailProps) {
         <a
           href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
           style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
-          title="LinkedIn"
+          title="Click here to connect with us on LinkedIn"
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#dbeafe'; (e.currentTarget as HTMLElement).style.color = '#1d4ed8' }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
         >
@@ -125,7 +125,7 @@ export default function Rail({ onModulesToggle }: RailProps) {
         <a
           href="https://facebook.com" target="_blank" rel="noopener noreferrer"
           style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
-          title="Facebook"
+          title="Click here to view our latest news feed"
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#eff6ff'; (e.currentTarget as HTMLElement).style.color = '#1877f2' }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
         >

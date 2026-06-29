@@ -106,9 +106,9 @@ export default function SignIn() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 16 }}>
                 <span style={{ fontSize: 11, color: 'var(--te-200)', marginRight: 2 }}>Follow us</span>
                 {[
-                  { href: 'https://wa.me/', icon: <IconBrandWhatsapp size={16} />, label: 'WhatsApp' },
-                  { href: 'https://linkedin.com', icon: <IconBrandLinkedin size={16} />, label: 'LinkedIn' },
-                  { href: 'https://facebook.com', icon: <IconBrandFacebook size={16} />, label: 'Facebook' },
+                  { href: 'https://wa.me/', icon: <IconBrandWhatsapp size={16} />, label: 'Click here to chat with us on WhatsApp' },
+                  { href: 'https://linkedin.com', icon: <IconBrandLinkedin size={16} />, label: 'Click here to connect with us on LinkedIn' },
+                  { href: 'https://facebook.com', icon: <IconBrandFacebook size={16} />, label: 'Click here to view our latest news feed' },
                 ].map(({ href, icon, label }) => (
                   <a
                     key={label}
