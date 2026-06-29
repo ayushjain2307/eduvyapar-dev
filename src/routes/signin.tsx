@@ -6,6 +6,7 @@ import {
   IconUser, IconLock, IconEye, IconEyeOff, IconPhone, IconCalendar,
   IconIdBadge, IconArrowRight, IconSend, IconLogin, IconArrowLeft,
   IconKey, IconAlertCircle, IconMoon, IconSun,
+  IconBrandWhatsapp, IconBrandLinkedin, IconBrandFacebook,
 } from '@tabler/icons-react'
 
 type Portal = 'admin' | 'parent' | 'student' | 'preadmit' | 'forgot'
@@ -43,11 +44,11 @@ export default function SignIn() {
           <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
             {/* Logo */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 'auto' }}>
-              <div style={{ width: 38, height: 38, background: 'rgba(255,255,255,.15)', borderRadius: 'var(--r8)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,.2)' }}>
-                <TablerIconSchool size={20} color="#fff" />
+              <div style={{ width: 38, height: 38, background: '#fff', borderRadius: 'var(--r8)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <img src="/logo.png" alt="Eduvyapar" style={{ width: 34, height: 34, objectFit: 'contain' }} />
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 500, color: '#fff' }}>AIVRM</div>
+                <div style={{ fontSize: 15, fontWeight: 500, color: '#fff' }}>Eduvyapar</div>
                 <div style={{ fontSize: 11, color: 'var(--te-200)', marginTop: 1 }}>Vidyavardhini Mandal</div>
               </div>
             </div>
@@ -99,6 +100,29 @@ export default function SignIn() {
               </div>
               <div style={{ fontSize: 11, color: 'var(--te-200)', marginTop: 10, display: 'flex', alignItems: 'center', gap: 5 }}>
                 <IconLock size={12} /> End-to-end secure · 24/7 support active
+              </div>
+
+              {/* Social links */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 16 }}>
+                <span style={{ fontSize: 11, color: 'var(--te-200)', marginRight: 2 }}>Follow us</span>
+                {[
+                  { href: 'https://wa.me/', icon: <IconBrandWhatsapp size={16} />, label: 'WhatsApp' },
+                  { href: 'https://linkedin.com', icon: <IconBrandLinkedin size={16} />, label: 'LinkedIn' },
+                  { href: 'https://facebook.com', icon: <IconBrandFacebook size={16} />, label: 'Facebook' },
+                ].map(({ href, icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={label}
+                    style={{ width: 30, height: 30, borderRadius: 8, background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,.8)', textDecoration: 'none', transition: '0.15s', flexShrink: 0 }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.25)'; (e.currentTarget as HTMLElement).style.color = '#fff' }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.12)'; (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,.8)' }}
+                  >
+                    {icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>

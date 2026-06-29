@@ -1,11 +1,13 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import {
-  IconSchool,
   IconDashboard,
   IconGridDots,
   IconBuildingCommunity,
   IconChartBar,
   IconFileDescription,
+  IconBrandWhatsapp,
+  IconBrandLinkedin,
+  IconBrandFacebook,
 } from '@tabler/icons-react'
 
 interface RailProps {
@@ -78,9 +80,7 @@ export default function Rail({ onModulesToggle }: RailProps) {
       {/* Logo — same height as topbar so it aligns perfectly */}
       <div style={{ height: 'var(--topbar-h)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--te-600)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <IconSchool size={20} color="#fff" />
-          </div>
+          <img src="/logo.png" alt="Eduvyapar" style={{ width: 36, height: 36, objectFit: 'contain', borderRadius: 6 }} />
         </Link>
       </div>
 
@@ -97,6 +97,41 @@ export default function Rail({ onModulesToggle }: RailProps) {
 
         <RailItem icon={<IconChartBar size={18} />} tooltip="Reports" />
         <RailItem icon={<IconFileDescription size={18} />} tooltip="Brochure" to="/brochure" active={path === '/brochure'} />
+      </div>
+
+      {/* Social icons — pinned to bottom */}
+      <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, paddingBottom: 12 }}>
+        <div style={{ width: 28, height: '0.5px', background: 'var(--border-tertiary)', margin: '4px 0' }} />
+        <a
+          href="https://wa.me/" target="_blank" rel="noopener noreferrer"
+          style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
+          title="WhatsApp"
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#dcfce7'; (e.currentTarget as HTMLElement).style.color = '#16a34a' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
+        >
+          <IconBrandWhatsapp size={18} />
+          <span className="rail-tooltip">WhatsApp</span>
+        </a>
+        <a
+          href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
+          title="LinkedIn"
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#dbeafe'; (e.currentTarget as HTMLElement).style.color = '#1d4ed8' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
+        >
+          <IconBrandLinkedin size={18} />
+          <span className="rail-tooltip">LinkedIn</span>
+        </a>
+        <a
+          href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+          style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', textDecoration: 'none', transition: '0.15s', position: 'relative' }}
+          title="Facebook"
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#eff6ff'; (e.currentTarget as HTMLElement).style.color = '#1877f2' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)' }}
+        >
+          <IconBrandFacebook size={18} />
+          <span className="rail-tooltip">Facebook</span>
+        </a>
       </div>
     </div>
   )
